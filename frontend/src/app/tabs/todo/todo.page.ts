@@ -14,6 +14,7 @@ export class TodoPage implements OnInit {
 
   public allToDos: ToDo[] = [];
   public newToDo: ToDo = new ToDo();
+  
   ngOnInit() {
     this.reloadAllToDos();
   }

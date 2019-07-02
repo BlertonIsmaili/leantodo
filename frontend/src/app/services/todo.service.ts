@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToDo } from '../model/todo';
+import { Project } from '../model/todo';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,6 @@ export class TodoService {
     console.log(toDo);
     return this.http.put(this.apiUrl + '/api/todo', toDo, { withCredentials: true });
   }
+
 }
+

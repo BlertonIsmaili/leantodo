@@ -17,6 +17,8 @@ import ch.zhaw.sml.iwi.meng.leantodo.entity.ToDo;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.ToDoRepository;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.User;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.UserRepository;
+import ch.zhaw.sml.iwi.meng.leantodo.entity.Project;
+import ch.zhaw.sml.iwi.meng.leantodo.entity.ProjectRepository;
 
 @SpringBootApplication
 @EnableWebSecurity
@@ -32,6 +34,9 @@ public class LeanToDo implements CommandLineRunner {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     
     @Autowired
@@ -73,5 +78,10 @@ public class LeanToDo implements CommandLineRunner {
         toDo.setTitle("Reply to student");
         toDo.setOwner("user");
         toDoRepository.save(toDo);
+    
+        Project project = new Project();
+        project.setTitle("Projekt 1");
+        project.setOwner("user");
+        projectRepository.save(project);    
     }
 }

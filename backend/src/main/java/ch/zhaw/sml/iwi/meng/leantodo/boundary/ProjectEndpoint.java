@@ -33,4 +33,10 @@ public class ProjectEndpoint {
     public void addToDo(@RequestParam(name="id") Long projectId, @RequestBody ToDo toDo,  Principal principal) {
         projectController.addToDo(projectId, toDo, principal.getName());
     }
+    
+    @RequestMapping(path = "/api/project", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated() AND hasRole('USER')")
+    public void addProject(@RequestBody Project project,  Principal principal) {
+        projectController.addProject(project, principal.getName());
+    }
 }

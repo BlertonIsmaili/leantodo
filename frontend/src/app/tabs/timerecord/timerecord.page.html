@@ -1,9 +1,96 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>timerecord</ion-title>
+    <ion-title>{{ViewTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <ion-card>
+    <ion-card-header tappaböe (click)="collapseCard = !collapseCard">
+      <ion-card-title>Add new Event</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="!collapseCard">
+      <ion-item>
+        <ion-input type = "text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input type = "text" placeholder="Description" [(ngModel)]="event.desc"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Start</ion-label>
+            <ion-datetime displayFormat="MM.DD.YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"> </ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>End</ion-label>
+            <ion-datetime displayFormat="MM.DD.YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"> </ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>All Day Event?</ion-label>
+          <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Project?</ion-label>
+            <ion-checkbox [(ngModel)]="event.isproject"></ion-checkbox>
+          </ion-item>
+        <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title==''">Add Event</ion-button>
+        
+    </ion-card-content>
+
+
+    <ion-row>
+      <ion-col size="4">
+        <ion-button expand="block" [color] = "calendar.mode == 'month'? 'primary': 'secondary'" (click)="changeMode('month')">Month</ion-button>
+      </ion-col>
+      <ion-col size="4">
+          <ion-button expand="block" [color] = "calendar.mode == 'week'? 'primary': 'secondary'" (click)="changeMode('week')">Week</ion-button>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button expand="block" [color] = "calendar.mode == 'day'? 'primary': 'secondary'" (click)="changeMode('day')">Day</ion-button>
+          </ion-col>
+
+          <ion-col size="6" text-left>
+            <ion-button fill= "clear" (click)="back()">
+              <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="6" text-right>
+              <ion-button fill= "clear" (click)="next()">
+                <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col text-center><ion-button color="secondary" (click)="today()">Today</ion-button></ion-col>
+    </ion-row>
+  </ion-card>
+
+    <calendar [eventSource]="eventSource"
+    [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate"
+    (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    (onTimeSelected)="onTimeSelected($event)"
+    startHour="7"
+    endHour="18"
+    step="30"
+    allDayLabel = "All Day"
+    formatDayHeader = "E"
+    startingDayWeek="1">
+ </calendar>
+
+  <!-- <ion-row >
+   <ion-label>Project</ion-label>
+    <ion-list>
+      <ion-item *ngFor="let project of allProjects">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              {{project.title}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </ion-row> -->
 
 </ion-content>

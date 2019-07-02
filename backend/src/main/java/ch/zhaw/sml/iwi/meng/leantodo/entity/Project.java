@@ -1,6 +1,7 @@
 package ch.zhaw.sml.iwi.meng.leantodo.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,6 +20,16 @@ public class Project {
     private String title;
 
     private String owner;
+
+    private String desc;
+
+    private Date start;
+
+    private Date end;
+
+    private boolean allDay;
+
+    private boolean isProj;
 
     @OneToMany
     private List<ToDo> toDos = new ArrayList<>();
@@ -47,6 +58,14 @@ public class Project {
         this.owner = owner;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     public List<ToDo> getToDos() {
         return toDos;
     }
@@ -54,6 +73,40 @@ public class Project {
     public void setToDos(List<ToDo> toDos) {
         this.toDos = toDos;
     }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
+    }
+
+    public boolean isAllDay() {
+        return allDay;
+    }
+
+    public void setAllDay(boolean allDay) {
+        this.allDay = allDay;
+    }
+
+    public boolean isProj() {
+        return isProj;
+    }
+
+    public void setProj(boolean isProj) {
+        this.isProj = isProj;
+    }
+
+    
 
     
     

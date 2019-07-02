@@ -43,5 +43,12 @@ public class ProjectController {
         project.getToDos().add(toDo);
         projectRepository.save(project);
     }
+
+    public void addProject(Project project, String owner) {
+     
+        project.setId(null);
+        project.setOwner(owner);
+        projectRepository.save(project);
+    }
     
 }

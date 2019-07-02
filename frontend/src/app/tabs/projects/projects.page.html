@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>projects</ion-title>
+    <ion-title>Projects</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<ion-list>
+    <ion-row >
+         <ion-list>
+           <ion-item *ngFor="let project of allProjects">
+             <ion-grid>
+               <ion-row>
+                 <ion-col >
+                   {{project.title}}
+                 </ion-col>
+                 <ion-col>
+                   {{project.desc}}
+                 </ion-col>
+                 <ion-col>
+                    {{project.start}}
+                 </ion-col>
+                 <ion-col>
+                    {{project.end}}
+                 </ion-col>
+                  <ion-input type="text" placeholder="New Task"></ion-input>
+                  <ion-button size="3">Add Task</ion-button>
+               </ion-row>
+             </ion-grid>
+           </ion-item>
+         </ion-list>
+       </ion-row>
+</ion-list>
 </ion-content>
