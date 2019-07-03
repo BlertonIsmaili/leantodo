@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoService } from 'src/app/services/todo.service';
-import { ToDo } from 'src/app/model/todo';
+import { ToDo, Task } from 'src/app/model/todo';
 
 @Component({
   selector: 'app-todo',
@@ -10,65 +10,40 @@ import { ToDo } from 'src/app/model/todo';
 })
 export class TodoPage implements OnInit {
 
-  constructor(private router: Router, private toDoService: TodoService) { }
+  constructor(private router: Router,  private taskService: TodoService) { }
 
   public allToDos: ToDo[] = [];
   public newToDo: ToDo = new ToDo();
+
+  public allTasks: Task[] = [];
+  public newTask: Task = new Task();
   
   ngOnInit() {
-    this.reloadAllToDos();
+    this.reloadAllTasks();
   }
 
-  async addToDo() {
-   /*  if (this.newToDo.title != null && this.newToDo.title != "") {
-      this.toDoService.addNewToDo(this.newToDo).subscribe(
-        data => {
-          console.log("Successfully added new todo.");
-          this.newToDo = new ToDo();
-          this.reloadAllToDos();
-        }, err => {
-          console.log(err);
-          this.router.navigateByUrl('/login');
-        }
-      );
-    } */
+  ionViewDidEnter() {
+
+    this.reloadAllTasks();
   }
 
-  async finish(toDo: ToDo) {
-      toDo.done = true;
-      this.updateToDo(toDo);
-  }
-
-  async archive(toDo: ToDo) {
-    toDo.archived = true;
-    this.updateToDo(toDo);
-  }
-
-  public updateToDo(toDo: ToDo) {
-  /*   this.toDoService.updateToDo(toDo).subscribe(
+  public reloadAllTasks() {
+    this.taskService.getAllTasks().subscribe(
       data => {
-        console.log("Successfully updated todo.");
-        this.reloadAllToDos();
+        this.allTasks = data;
+        console.log(this.allTasks[2].project.title);
       }, err => {
         console.log(err);
         this.router.navigateByUrl('/login');
       }
-    ); */
+    );
   }
+  
 
-  public reloadAllToDos() {
-  /*   this.toDoService.getAllToDos().subscribe(
-      data => {
-        this.allToDos = data;
-      }, err => {
-        console.log(err);
-        this.router.navigateByUrl('/login');
-      }
-    ); */
   }
 
   
 
 
 
-}
+

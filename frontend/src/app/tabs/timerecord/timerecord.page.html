@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content>
   <ion-card>
-    <ion-card-header tappaböe (click)="collapseCard = !collapseCard">
+    <ion-card-header (click)="collapseCard = !collapseCard">
       <ion-card-title>Add new Event</ion-card-title>
     </ion-card-header>
     <ion-card-content *ngIf="!collapseCard">
@@ -77,20 +77,4 @@
     formatDayHeader = "E"
     startingDayWeek="1">
     </calendar>
-
-  <!-- <ion-row >
-   <ion-label>Project</ion-label>
-    <ion-list>
-      <ion-item *ngFor="let project of allProjects">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              {{project.title}}
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-    </ion-list>
-  </ion-row> -->
-
 </ion-content>

@@ -37,28 +37,4 @@
       </ion-item>
     </ion-row>
   </ion-list>
-  <ion-toolbar>
-      <ion-title>Tasks</ion-title>
-    </ion-toolbar>
-  <ion-list>
-      <ion-item *ngFor="let task of allTasks">
-        <ion-row>
-          <div *ngIf="task.project !== null">
-          {{task.project.title}}
-        </div>
-        </ion-row>
-        <ion-row style="margin-left: 10px">
-            -
-          </ion-row>
-            <ion-row>
-              {{task.name}}
-            </ion-row>
-            <ion-row style="margin-left: 10px">
-              -
-            </ion-row>
-            <ion-row style="margin-left: 10px">
-              {{task.responsible}}
-            </ion-row>
-      </ion-item>
-  </ion-list>
 </ion-content>
