@@ -29,7 +29,7 @@ public class TaskEndpoint {
     @RequestMapping(path = "/api/task", method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated() AND hasRole('USER')")
     public void addToDo(@RequestBody Task newToDo, Principal principal) {
-        taskController.persistToDo(newToDo, principal.getName());
+        taskController.persistTask(newToDo);
     }
     
     // @RequestMapping(path = "/api/task", method = RequestMethod.PUT)

@@ -14,3 +14,11 @@ export class Project {
     public allDay: boolean;
     public proj: boolean;
 }
+
+export class Task {
+    public name: string;
+    public responsible: string;
+    public id: number;
+    public projectid: number;
+
+}

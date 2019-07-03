@@ -5,37 +5,50 @@
 </ion-header>
 
 <ion-content>
-<ion-list>
-    <ion-row >
-         <ion-list>
-           <ion-item *ngFor="let project of projProject">
-             <ion-grid>
-               <ion-row>
-                 <ion-col >
-                   {{project.title}}
-                 </ion-col>
-                 <ion-col>
-                   {{project.desc}}
-                 </ion-col>
-                 <ion-col>
-                    {{project.start | date: 'dd.MM.yyyy'}} 
-                 </ion-col>
-                 <ion-col style="margin-left: 50px">     bis
-                </ion-col>
-                 <ion-col>
-                    {{project.end | date: 'dd.MM.yyyy'}}
-                 </ion-col>
-                 <ion-col>
-                  <ion-input type="text" placeholder="New Task"></ion-input>
-                 </ion-col>
-                 <ion-col>
-                  <ion-input type="text" placeholder="Responsible"></ion-input>
-                 </ion-col>
-                  <ion-button style="margin-left: auto">Add Task</ion-button>
-               </ion-row>
-             </ion-grid>
-           </ion-item>
-         </ion-list>
-       </ion-row>
-</ion-list>
+
+  <ion-list>
+    <ion-row>
+      <ion-item *ngFor="let project of projProject">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              {{project.title}}
+            </ion-col>
+            <ion-col>
+              {{project.desc}}
+            </ion-col>
+            <ion-col>
+              {{project.start | date: 'dd.MM.yyyy'}}
+            </ion-col>
+            <ion-col style="margin-left: 50px"> bis
+            </ion-col>
+            <ion-col>
+              {{project.end | date: 'dd.MM.yyyy'}}
+            </ion-col>
+            <ion-col>
+              <ion-input type="text" #taskname placeholder="New Task"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input type="text" #taskresponsible placeholder="Responsible"></ion-input>
+            </ion-col>
+            <ion-button (click)="addTask(project.id, taskname.value, taskresponsible.value);taskname.value = '';taskresponsible.value='' " style="margin-left: auto">Add Task</ion-button>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-row>
+  </ion-list>
+
+  <ion-list>
+      <ion-item *ngFor="let task of allTasks">
+            <ion-row>
+              {{task.name}}
+            </ion-row>
+            <ion-row style="margin-left: 10px">
+              -
+            </ion-row>
+            <ion-row style="margin-left: 10px">
+              {{task.responsible}}
+            </ion-row>
+      </ion-item>
+  </ion-list>
 </ion-content>

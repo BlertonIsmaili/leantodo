@@ -20,7 +20,7 @@ export class TodoPage implements OnInit {
   }
 
   async addToDo() {
-    if (this.newToDo.title != null && this.newToDo.title != "") {
+   /*  if (this.newToDo.title != null && this.newToDo.title != "") {
       this.toDoService.addNewToDo(this.newToDo).subscribe(
         data => {
           console.log("Successfully added new todo.");
@@ -31,7 +31,7 @@ export class TodoPage implements OnInit {
           this.router.navigateByUrl('/login');
         }
       );
-    }
+    } */
   }
 
   async finish(toDo: ToDo) {
@@ -45,7 +45,7 @@ export class TodoPage implements OnInit {
   }
 
   public updateToDo(toDo: ToDo) {
-    this.toDoService.updateToDo(toDo).subscribe(
+  /*   this.toDoService.updateToDo(toDo).subscribe(
       data => {
         console.log("Successfully updated todo.");
         this.reloadAllToDos();
@@ -53,18 +53,18 @@ export class TodoPage implements OnInit {
         console.log(err);
         this.router.navigateByUrl('/login');
       }
-    );
+    ); */
   }
 
   public reloadAllToDos() {
-    this.toDoService.getAllToDos().subscribe(
+  /*   this.toDoService.getAllToDos().subscribe(
       data => {
         this.allToDos = data;
       }, err => {
         console.log(err);
         this.router.navigateByUrl('/login');
       }
-    );
+    ); */
   }
 
   
