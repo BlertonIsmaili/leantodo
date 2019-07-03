@@ -3,7 +3,6 @@ package ch.zhaw.sml.iwi.meng.leantodo.boundary;
 import java.security.Principal;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.zhaw.sml.iwi.meng.leantodo.controller.ProjectController;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.Project;
-import ch.zhaw.sml.iwi.meng.leantodo.entity.ToDo;
+import ch.zhaw.sml.iwi.meng.leantodo.entity.Task;
 
 @RestController
 public class ProjectEndpoint {
@@ -30,7 +29,7 @@ public class ProjectEndpoint {
     
     @RequestMapping(path = "/api/project/{id}", method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated() AND hasRole('USER')")
-    public void addToDo(@RequestParam(name="id") Long projectId, @RequestBody ToDo toDo,  Principal principal) {
+    public void addToDo(@RequestParam(name="id") Long projectId, @RequestBody Task toDo,  Principal principal) {
         projectController.addToDo(projectId, toDo, principal.getName());
     }
     

@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
     this.tokenService.login(this.userName,this.password).subscribe(data => {
       this.currentAuthentification = data;
       this.password = "";
-      this.router.navigateByUrl('/tabs/todo');
+      this.router.navigateByUrl('/tabs/timerecord');
     }, err => {
       console.log(err);
     });

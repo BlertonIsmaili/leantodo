@@ -13,8 +13,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import ch.zhaw.sml.iwi.meng.leantodo.entity.Role;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.RoleRepository;
-import ch.zhaw.sml.iwi.meng.leantodo.entity.ToDo;
-import ch.zhaw.sml.iwi.meng.leantodo.entity.ToDoRepository;
+import ch.zhaw.sml.iwi.meng.leantodo.entity.Task;
+import ch.zhaw.sml.iwi.meng.leantodo.entity.TaskRepository;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.User;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.UserRepository;
 import ch.zhaw.sml.iwi.meng.leantodo.entity.Project;
@@ -40,7 +40,7 @@ public class LeanToDo implements CommandLineRunner {
 
     
     @Autowired
-    private ToDoRepository toDoRepository;
+    private TaskRepository taskRepository;
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
@@ -69,15 +69,15 @@ public class LeanToDo implements CommandLineRunner {
         u.getRoles().add(r);
         userRepository.save(u);
 
-        ToDo toDo = new ToDo();
-        toDo.setTitle("Finish This app");
-        toDo.setOwner("user");
-        toDoRepository.save(toDo);
+        Task toDo = new Task();
+        toDo.setName("Finish This app");
+        toDo.setResponsible("user");
+        taskRepository.save(toDo);
 
-        toDo = new ToDo();
-        toDo.setTitle("Reply to student");
-        toDo.setOwner("user");
-        toDoRepository.save(toDo);
+        toDo = new Task();
+        toDo.setName("Reply to student");
+        toDo.setResponsible("user");
+        taskRepository.save(toDo);
     
         Project project = new Project();
         project.setTitle("Projekt 1");

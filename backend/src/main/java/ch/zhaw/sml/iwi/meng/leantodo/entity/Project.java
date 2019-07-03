@@ -34,7 +34,7 @@ public class Project {
     private String task;
 
     @OneToMany
-    private List<ToDo> toDos = new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -68,15 +68,15 @@ public class Project {
         this.desc = desc;
     }
 
-    public List<ToDo> getToDos() {
-        return toDos;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public void setToDos(List<ToDo> toDos) {
-        this.toDos = toDos;
+    public void setTask(List<Task> task) {
+        this.tasks = task;
     }
 
-    public Date getStart() {
+    public Date getStart() { 
         return start;
     }
 

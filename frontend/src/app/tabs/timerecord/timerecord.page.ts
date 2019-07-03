@@ -79,8 +79,6 @@ export class TimerecordPage implements OnInit {
     this.eventSource.push(eventCopy);
     this.myCal.loadEvents();
     this.resetEvent();
-
-    if(eventCopy.isproject){
       
       let user = "user";
       let title = eventCopy.title;
@@ -109,7 +107,6 @@ export class TimerecordPage implements OnInit {
           this.router.navigateByUrl('/login');
         }
       );
-    }
   }
 
   back(){
@@ -158,8 +155,9 @@ export class TimerecordPage implements OnInit {
   public reloadAllProjects() {
     this.projectService.getAllProjects().subscribe(
       data => {
+        this.allProjects= [];
         this.allProjects = data;
-        // this.loadCalenderEntries();
+        this.loadCalenderEntries();
       }, err => {
         console.log(err);
         this.router.navigateByUrl('/login');
@@ -167,16 +165,17 @@ export class TimerecordPage implements OnInit {
     );
   }
 
-/*   public loadCalenderEntries(){
+  public loadCalenderEntries(){
     for(let project of this.allProjects){
       let eventCopy = {
         title: project.title,
-        startTime: project.start,
-        endTime: project.end,
+        startTime: new Date(project.start),
+        endTime: new Date(project.end),
         allDay: project.allDay,
         isproject: project.proj,
         desc: project.desc
       }
+
       if(project.allDay){
         let start = eventCopy.startTime;
         let end = eventCopy.endTime;
@@ -187,5 +186,5 @@ export class TimerecordPage implements OnInit {
       this.eventSource.push(eventCopy);
       this.myCal.loadEvents();
     }
-  } */
+  }
 }

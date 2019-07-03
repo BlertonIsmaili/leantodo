@@ -13,5 +13,4 @@ export class Project {
     public desc: string;
     public allDay: boolean;
     public proj: boolean;
-    
 }
