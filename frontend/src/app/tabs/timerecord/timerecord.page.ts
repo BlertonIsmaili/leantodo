@@ -38,7 +38,7 @@ export class TimerecordPage implements OnInit {
 
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
   
-  constructor(private router: Router,public events: Events, private alertCtrl: AlertController, @Inject(LOCALE_ID)private locale, private projectService: ProjectService) { }
+  constructor( private router: Router,public events: Events, private alertCtrl: AlertController, @Inject(LOCALE_ID)private locale, private projectService: ProjectService) { }
 
   public allProjects: Project[] = [];
   public newProject: Project = new Project();
@@ -59,6 +59,7 @@ export class TimerecordPage implements OnInit {
     };
   }
 
+  
   addEvent(){
     let eventCopy = {
       title: this.event.title,
@@ -72,7 +73,7 @@ export class TimerecordPage implements OnInit {
       let start = eventCopy.startTime;
       let end = eventCopy.endTime;
       eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
-      eventCopy.endTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()+1));
+      eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate()+1));
     }
  
     this.eventSource.push(eventCopy);
@@ -80,24 +81,23 @@ export class TimerecordPage implements OnInit {
     this.resetEvent();
 
     if(eventCopy.isproject){
+      
       let user = "user";
       let title = eventCopy.title;
       let start = eventCopy.startTime;
       let end = eventCopy.endTime;
-      let allD = eventCopy.allDay;
+      let allDay = eventCopy.allDay;
       let proj = eventCopy.isproject;
       let desc = eventCopy.desc;
     
-
       let p = new Project();
 
-     
       p.title = title;
       p.user = user;
       p.start = start;
       p.desc = desc;
       p.end = end;
-      p.allD = allD;
+      p.allDay = allDay;
       p.proj = proj;
       
       this.projectService.addNewProject(p).subscribe(
@@ -159,10 +159,33 @@ export class TimerecordPage implements OnInit {
     this.projectService.getAllProjects().subscribe(
       data => {
         this.allProjects = data;
+        // this.loadCalenderEntries();
       }, err => {
         console.log(err);
         this.router.navigateByUrl('/login');
       }
     );
   }
+
+/*   public loadCalenderEntries(){
+    for(let project of this.allProjects){
+      let eventCopy = {
+        title: project.title,
+        startTime: project.start,
+        endTime: project.end,
+        allDay: project.allDay,
+        isproject: project.proj,
+        desc: project.desc
+      }
+      if(project.allDay){
+        let start = eventCopy.startTime;
+        let end = eventCopy.endTime;
+        eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
+        eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate()+1));
+      }
+   
+      this.eventSource.push(eventCopy);
+      this.myCal.loadEvents();
+    }
+  } */
 }

@@ -42,7 +42,7 @@ public class Calendar {
         this.title = title;
     }
 
-   public String getDesc() {
+    public String getDesc() {
         return desc;
     }
 
@@ -50,15 +50,15 @@ public class Calendar {
         this.desc = desc;
     }
 
-    public Date getStarttime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStarttime(Date startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndtime() {
+    public Date getEndTime() {
         return endTime;
     }
 
@@ -66,12 +66,30 @@ public class Calendar {
         this.endTime = endTime;
     }
 
-    public List<Project> getProjects() {
+    public Boolean getAllDay() {
+        return allDay;
+    }
+
+    public void setAllDay(Boolean allDay) {
+        this.allDay = allDay;
+    }
+
+    public Boolean getIsProject() {
+        return isProject;
+    }
+
+    public void setIsProject(Boolean isProject) {
+        this.isProject = isProject;
+    }
+
+    public List<Project> getProject() {
         return Project;
     }
 
-    public void setProject(List<Project> Project) {
-        this.Project = Project;
+    public void setProject(List<Project> project) {
+        Project = project;
     }
+
+    
 
 }

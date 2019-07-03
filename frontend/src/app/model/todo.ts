@@ -11,7 +11,7 @@ export class Project {
     public start: Date;
     public end: Date;
     public desc: string;
-    public allD: boolean;
+    public allDay: boolean;
     public proj: boolean;
     
 }

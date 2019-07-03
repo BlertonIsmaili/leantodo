@@ -31,6 +31,8 @@ public class Project {
 
     private boolean isProj;
 
+    private String task;
+
     @OneToMany
     private List<ToDo> toDos = new ArrayList<>();
 
@@ -104,6 +106,14 @@ public class Project {
 
     public void setProj(boolean isProj) {
         this.isProj = isProj;
+    }
+
+    public String getTask() {
+        return task;
+    }
+
+    public void setTask(String task) {
+        this.task = task;
     }
 
     
