@@ -31,11 +31,6 @@ public class Project {
 
     private boolean isProj;
 
-    private String task;
-
-    @OneToMany
-    private List<Task> tasks = new ArrayList<>();
-
     public Long getId() {
         return id;
     }
@@ -66,14 +61,6 @@ public class Project {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTask(List<Task> task) {
-        this.tasks = task;
     }
 
     public Date getStart() { 
@@ -107,16 +94,6 @@ public class Project {
     public void setProj(boolean isProj) {
         this.isProj = isProj;
     }
-
-    public String getTask() {
-        return task;
-    }
-
-    public void setTask(String task) {
-        this.task = task;
-    }
-
-    
 
     
     

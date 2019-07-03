@@ -51,13 +51,13 @@ export class ProjectsPage implements OnInit {
     );
   }
 
-  public addTask(projectid, taskname, taskresponsible) {
-    console.log(projectid+" "+taskname+" "+taskresponsible);
+  public addTask(p: Project, taskname, taskresponsible) {
+    console.log(p+" "+taskname+" "+taskresponsible);
 
     let task = new Task();
     task.name= taskname;
     task.responsible = taskresponsible;
-    task.projectid = projectid;
+    task.project = p;
 
     this.taskService.addNewTask(task).subscribe(
         data => {
@@ -73,6 +73,7 @@ export class ProjectsPage implements OnInit {
     this.taskService.getAllTasks().subscribe(
       data => {
         this.allTasks = data;
+        console.log(this.allTasks[2].project.title); 
       }, err => {
         console.log(err);
         this.router.navigateByUrl('/login');

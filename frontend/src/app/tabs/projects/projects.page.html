@@ -31,15 +31,25 @@
             <ion-col>
               <ion-input type="text" #taskresponsible placeholder="Responsible"></ion-input>
             </ion-col>
-            <ion-button (click)="addTask(project.id, taskname.value, taskresponsible.value);taskname.value = '';taskresponsible.value='' " style="margin-left: auto">Add Task</ion-button>
+            <ion-button (click)="addTask(project, taskname.value, taskresponsible.value);taskname.value = '';taskresponsible.value='' " style="margin-left: auto">Add Task</ion-button>
           </ion-row>
         </ion-grid>
       </ion-item>
     </ion-row>
   </ion-list>
-
+  <ion-toolbar>
+      <ion-title>Tasks</ion-title>
+    </ion-toolbar>
   <ion-list>
       <ion-item *ngFor="let task of allTasks">
+        <ion-row>
+          <div *ngIf="task.project !== null">
+          {{task.project.title}}
+        </div>
+        </ion-row>
+        <ion-row style="margin-left: 10px">
+            -
+          </ion-row>
             <ion-row>
               {{task.name}}
             </ion-row>

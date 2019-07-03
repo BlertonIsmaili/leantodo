@@ -19,6 +19,6 @@ export class Task {
     public name: string;
     public responsible: string;
     public id: number;
-    public projectid: number;
+    public project : Project;
 
 }

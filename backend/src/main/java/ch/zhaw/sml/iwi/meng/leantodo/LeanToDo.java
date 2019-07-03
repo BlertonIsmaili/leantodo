@@ -69,19 +69,6 @@ public class LeanToDo implements CommandLineRunner {
         u.getRoles().add(r);
         userRepository.save(u);
 
-        Task toDo = new Task();
-        toDo.setName("Finish This app");
-        toDo.setResponsible("user");
-        taskRepository.save(toDo);
 
-        toDo = new Task();
-        toDo.setName("Reply to student");
-        toDo.setResponsible("user");
-        taskRepository.save(toDo);
-    
-        Project project = new Project();
-        project.setTitle("Projekt 1");
-        project.setOwner("user");
-        projectRepository.save(project);    
     }
 }

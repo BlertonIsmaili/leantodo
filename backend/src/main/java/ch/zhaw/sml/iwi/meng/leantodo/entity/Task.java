@@ -3,6 +3,7 @@ package ch.zhaw.sml.iwi.meng.leantodo.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,7 +22,8 @@ public class Task {
 
     private String name;
 
-    private int projectid;
+    @ManyToOne
+    private Project project;
 
     private String responsible;
 
@@ -55,12 +57,14 @@ public class Task {
         this.name = name;
     }
 
-    public int getProjectid() {
-        return projectid;
+    public Project getProject() {
+        return project;
     }
 
-    public void setProjectid(int projectid) {
-        this.projectid = projectid;
+    public void setProject(Project project) {
+        this.project = project;
     }
+
+ 
     
 }
