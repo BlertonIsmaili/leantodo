@@ -5,19 +5,18 @@
 </ion-header>
 
 <ion-content>
-
   <ion-list>
     <ion-row>
       <ion-item *ngFor="let project of projProject">
         <ion-grid>
           <ion-row>
-            <ion-col>
+            <ion-col style="width: 100px">
               {{project.title}}
             </ion-col>
-            <ion-col>
+            <ion-col style="width: 100px">
               {{project.desc}}
             </ion-col>
-            <ion-col>
+            <ion-col >
               {{project.start | date: 'dd.MM.yyyy'}}
             </ion-col>
             <ion-col style="margin-left: 50px"> bis

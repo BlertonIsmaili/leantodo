@@ -59,7 +59,8 @@ export class TimerecordPage implements OnInit {
     };
   }
 
-  
+
+
   addEvent(){
     let eventCopy = {
       title: this.event.title,
@@ -102,12 +103,17 @@ export class TimerecordPage implements OnInit {
         data => {
           console.log("Successfully updated todo.");
           this.reloadAllProjects();
+         
         }, err => {
           console.log(err);
           this.router.navigateByUrl('/login');
         }
       );
+
+     
   }
+
+  
 
   back(){
     var swiper = document.querySelector('.swiper-container')['swiper'];
@@ -163,6 +169,7 @@ export class TimerecordPage implements OnInit {
         this.router.navigateByUrl('/login');
       }
     );
+ 
   }
 
   public loadCalenderEntries(){
@@ -182,9 +189,9 @@ export class TimerecordPage implements OnInit {
         eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
         eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate()+1));
       }
-   
       this.eventSource.push(eventCopy);
       this.myCal.loadEvents();
     }
+    
   }
 }
